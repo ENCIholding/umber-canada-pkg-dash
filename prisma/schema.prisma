@@ -1,4 +1,4 @@
-generator client {
+﻿generator client {
   provider = "prisma-client-js"
 }
 
@@ -120,4 +120,14 @@ model Project {
 
   stakeholder  Stakeholder?  @relation(fields: [stakeholderId], references: [id], onDelete: SetNull)
   vendorClient VendorClient? @relation(fields: [vendorClientId], references: [id], onDelete: SetNull)
+}
+
+model CalendarEvent {
+  id        Int      @id @default(autoincrement())
+  title     String
+  date      DateTime
+  time      String
+  type      String
+  notes     String?
+  createdAt DateTime @default(now())
 }
