@@ -1,68 +1,12 @@
-import { NextResponse } from "next/server";
-<<<<<<< HEAD
-import nodemailer from "nodemailer";
+﻿import { NextResponse } from "next/server";
+import { sendEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
   try {
     const { to, subject, message } = await req.json();
-
-    if (!to || !subject || !message) {
-      return NextResponse.json(
-        { message: "Missing required email fields." },
-        { status: 400 }
-      );
-    }
-
-    const host = process.env.SMTP_HOST;
-    const port = Number(process.env.SMTP_PORT || 587);
-    const user = process.env.SMTP_USER;
-    const pass = process.env.SMTP_PASS;
-    const from = process.env.SMTP_FROM || user;
-
-    if (!host || !user || !pass) {
-      return NextResponse.json(
-        { message: "SMTP is not configured." },
-        { status: 500 }
-      );
-    }
-
-    const transporter = nodemailer.createTransport({
-      host,
-      port,
-      secure: false,
-      auth: {
-        user,
-        pass,
-      },
-    });
-
-    await transporter.sendMail({
-      from,
-      to,
-      subject,
-      text: message,
-    });
-
-    return NextResponse.json({
-      message: "Email sent successfully!",
-    });
-  } catch (error) {
-    console.error("Send email error:", error);
-
-    return NextResponse.json(
-      { message: "Failed to send email." },
-      { status: 500 }
-    );
+    await sendEmail(to, subject, message);
+    return NextResponse.json({ success: true });
+  } catch (err) {
+    return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
-=======
-import { sendEmail } from "@/lib/email";
-
-export async function POST(req: Request) {
-  const { to, subject, message } = await req.json();
-
-  await sendEmail(to, subject, message);
-
-  return NextResponse.json({ success: true });
-}
->>>>>>> 8d011eb24df60e2ca768b17911868af01efb844b

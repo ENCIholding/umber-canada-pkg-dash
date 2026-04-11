@@ -1,16 +1,17 @@
-import { Sidebar } from "@/components/layout/sidebar";
-import { TopHeader } from "@/components/layout/top-header";
-import { FooterLicenseBlock } from "@/components/layout/footer-license-block";
+﻿"use client";
 
-export function AppShell({ children }: { children: React.ReactNode }) {
+import { Sidebar } from "./sidebar";
+import { TopHeader } from "./top-header";
+import PageActions from "./page-actions";
+
+export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-zinc-100 dark:bg-black">
+    <div className="flex min-h-screen w-full">
       <Sidebar />
-
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex flex-col w-full">
         <TopHeader />
-        <main className="flex-1 p-6">{children}</main>
-        <FooterLicenseBlock />
+        <PageActions />
+        <main className="p-6">{children}</main>
       </div>
     </div>
   );

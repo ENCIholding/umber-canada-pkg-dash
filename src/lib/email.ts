@@ -1,18 +1,22 @@
-import nodemailer from "nodemailer";
-
-export const mailer = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.EMAIL_USER,   // umbercanadapkg@gmail.com
-    pass: process.env.EMAIL_PASS,   // your 16-char app password
-  },
-});
+﻿import nodemailer from "nodemailer";
 
 export async function sendEmail(to: string, subject: string, text: string) {
-  return mailer.sendMail({
-    from: `"Umber Canada" <${process.env.EMAIL_USER}>`,
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port: Number(process.env.SMTP_PORT),
+    secure: false,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS,
+    },
+  });
+
+  await transporter.sendMail({
+    from: process.env.SMTP_FROM,
     to,
     subject,
     text,
   });
+
+  return { success: true };
 }
