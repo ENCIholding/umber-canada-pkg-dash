@@ -6,17 +6,118 @@ datasource db {
   provider = "postgresql"
 }
 
-model User {
-  id           Int       @id @default(autoincrement())
-  username     String    @unique
-  email        String    @unique
-  passwordHash String
-  role         UserRole
-  isActive     Boolean   @default(true)
-  fullName     String
-}
-
 enum UserRole {
   ADMIN
-  USER
+}
+
+enum EntityType {
+  STAKEHOLDER
+  VENDOR_CLIENT
+  OTHER
+}
+
+enum VendorClientCategory {
+  BUILDER
+  MULTIPLEX_BUILDER
+  RETAIL
+  CLIENT
+}
+
+enum ProjectStatus {
+  INQUIRY
+  QUOTING
+  APPROVED
+  PROCUREMENT
+  IN_DELIVERY
+  INSTALLATION
+  COMPLETED
+  ON_HOLD
+  CANCELLED
+}
+
+model User {
+  id           String   @id @default(uuid())
+  username     String   @unique
+  email        String   @unique
+  passwordHash String
+  fullName     String?
+  role         UserRole @default(ADMIN)
+  isActive     Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model MasterEntity {
+  id           String     @id @default(uuid())
+  companyName  String
+  contactName  String?
+  officePhone  String?
+  mobilePhone  String?
+  email        String?
+  addressLine1 String?
+  city         String?
+  province     String?
+  postalCode   String?
+  country      String?    @default("Canada")
+  entityType   EntityType
+  rating       Int?
+  isActive     Boolean    @default(true)
+  workAgain    Boolean    @default(true)
+  notes        String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  stakeholder  Stakeholder?
+  vendorClient VendorClient?
+}
+
+model Stakeholder {
+  id                String    @id @default(uuid())
+  masterEntityId    String    @unique
+  productCategory   String?
+  relationshipStart DateTime?
+  complianceStatus  String?
+  currency          String?
+  exchangeRate      Float?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @default(now()) @updatedAt
+
+  masterEntity MasterEntity @relation(fields: [masterEntityId], references: [id], onDelete: Cascade)
+  projects     Project[]
+}
+
+model VendorClient {
+  id             String               @id @default(uuid())
+  masterEntityId String               @unique
+  category       VendorClientCategory
+  projectType    String?
+  creditTerms    String?
+  paymentPattern String?
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  masterEntity MasterEntity @relation(fields: [masterEntityId], references: [id], onDelete: Cascade)
+  projects     Project[]
+}
+
+model Project {
+  id               String        @id @default(uuid())
+  projectNumber    String        @unique
+  projectName      String
+  addressLine1     String?
+  city             String?
+  province         String?
+  postalCode       String?
+  outOfProvince    Boolean       @default(false)
+  status           ProjectStatus @default(INQUIRY)
+  startDate        DateTime?
+  estimatedEndDate DateTime?
+  notes            String?
+  stakeholderId    String?
+  vendorClientId   String?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  stakeholder  Stakeholder?  @relation(fields: [stakeholderId], references: [id], onDelete: SetNull)
+  vendorClient VendorClient? @relation(fields: [vendorClientId], references: [id], onDelete: SetNull)
 }
