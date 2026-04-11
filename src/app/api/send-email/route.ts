@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+<<<<<<< HEAD
 import nodemailer from "nodemailer";
 
 export async function POST(req: Request) {
@@ -54,3 +55,14 @@ export async function POST(req: Request) {
     );
   }
 }
+=======
+import { sendEmail } from "@/lib/email";
+
+export async function POST(req: Request) {
+  const { to, subject, message } = await req.json();
+
+  await sendEmail(to, subject, message);
+
+  return NextResponse.json({ success: true });
+}
+>>>>>>> 8d011eb24df60e2ca768b17911868af01efb844b
