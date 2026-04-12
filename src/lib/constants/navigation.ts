@@ -25,3 +25,5 @@
   { label: " settings.Value.ToUpper() ettings", href: "/settings" },
   { label: " license.Value.ToUpper() icense", href: "/license" },
 ];
+
+

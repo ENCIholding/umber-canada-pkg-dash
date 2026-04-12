@@ -1,43 +1,30 @@
 ﻿import { NextResponse } from "next/server";
-import { promises as fs } from "fs";
+import fs from "fs/promises";
 import path from "path";
-
-const UPLOAD_DIR = path.join(process.cwd(), "public", "uploads");
-const ALLOWED_EXT = [".pdf", ".doc", ".docx", ".xls", ".xlsx"];
 
 export async function POST(req: Request) {
   try {
-    const formData = await req.formData();
-    const file = formData.get("file") as File | null;
-    const context = (formData.get("context") as string | null) || "general";
+    const data = await req.formData();
+    const file = data.get("file") as File;
 
     if (!file) {
-      return NextResponse.json({ success: false, error: "No file provided" }, { status: 400 });
+      return NextResponse.json({ success: false, error: "No file uploaded" }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
-    const ext = path.extname(file.name).toLowerCase();
-
-    if (!ALLOWED_EXT.includes(ext)) {
-      return NextResponse.json({ success: false, error: "File type not allowed" }, { status: 400 });
-    }
-
+    const buffer = Buffer.from(await file.arrayBuffer());
     const safeName = file.name.replace(/[^a-zA-Z0-9.\-_]/g, "_");
-    const fileName = ${Date.now()}__;
-    const filePath = path.join(UPLOAD_DIR, fileName);
+    const fileName = `${Date.now()}__${safeName}`;
 
+    const UPLOAD_DIR = path.join(process.cwd(), "uploads");
+    await fs.mkdir(UPLOAD_DIR, { recursive: true });
+
+    const filePath = path.join(UPLOAD_DIR, fileName);
     await fs.writeFile(filePath, buffer);
 
-    const publicPath = /uploads/;
-
-    return NextResponse.json({
-      success: true,
-      path: publicPath,
-      name: file.name,
-      context,
-    });
+    return NextResponse.json({ success: true, fileName });
   } catch (err) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
+

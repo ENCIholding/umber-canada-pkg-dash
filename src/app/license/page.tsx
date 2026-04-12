@@ -1,4 +1,4 @@
-import { AppShell } from "@/components/layout/app-shell";
+﻿import { AppShell } from "@/components/layout/app-shell";
 
 export default function LicensePage() {
   return (
@@ -22,3 +22,5 @@ export default function LicensePage() {
     </AppShell>
   );
 }
+
+

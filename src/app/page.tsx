@@ -1,4 +1,4 @@
-export default function HomePage() {
+﻿export default function HomePage() {
   return (
     <main className="min-h-screen bg-background text-foreground flex items-center justify-center">
       <div className="text-center px-6">
@@ -10,3 +10,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+

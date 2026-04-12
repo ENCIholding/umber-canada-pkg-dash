@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { AppShell } from "@/components/layout/app-shell";
@@ -88,3 +88,5 @@ export default function MasterDatabasePage() {
     </AppShell>
   );
 }
+
+
