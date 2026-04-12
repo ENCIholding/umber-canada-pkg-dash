@@ -1,9 +1,9 @@
-﻿"use client";
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { UploadDialog } from "@/components/files/upload-dialog";
+import UploadDialog from "@/components/files/upload-dialog";
 
 export default function PageActions() {
   const router = useRouter();
@@ -74,4 +74,3 @@ export default function PageActions() {
     </div>
   );
 }
-
