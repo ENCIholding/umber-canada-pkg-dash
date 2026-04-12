@@ -1,4 +1,5 @@
-﻿generator client {
+@'
+generator client {
   provider = "prisma-client-js"
 }
 
@@ -46,28 +47,28 @@ model Project {
 }
 
 model PurchaseOrder {
-  id              String       @id @default(cuid())
-  number          String       @unique
-  stakeholderId   String?
-  stakeholder     Stakeholder? @relation(fields: [stakeholderId], references: [id])
-  projectId       String?
-  project         Project?     @relation(fields: [projectId], references: [id])
-  total           Decimal      @default(0)
-  createdAt       DateTime     @default(now())
-  updatedAt       DateTime     @updatedAt
+  id            String   @id @default(cuid())
+  number        String   @unique
+  stakeholderId String?
+  stakeholder   Stakeholder? @relation(fields: [stakeholderId], references: [id])
+  projectId     String?
+  project       Project? @relation(fields: [projectId], references: [id])
+  total         Decimal  @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model Shipment {
-  id              String        @id @default(cuid())
-  code            String        @unique
+  id              String   @id @default(cuid())
+  code            String   @unique
   status          String
   stakeholderId   String?
-  stakeholder     Stakeholder?  @relation(fields: [stakeholderId], references: [id])
+  stakeholder     Stakeholder? @relation(fields: [stakeholderId], references: [id])
   purchaseOrderId String?
   purchaseOrder   PurchaseOrder? @relation(fields: [purchaseOrderId], references: [id])
   expectedArrival DateTime?
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
 }
 
 model PaymentSent {
@@ -87,7 +88,7 @@ model PaymentReceived {
   date      DateTime
   amount    Decimal
   clientId  String?
-  client    Client?  @relation(fields: [clientId], references: [id])
+  client    Client? @relation(fields: [clientId], references: [id])
   projectId String?
   project   Project? @relation(fields: [projectId], references: [id])
   status    String
@@ -182,3 +183,4 @@ model EmailLog {
   status    String
   createdAt DateTime @default(now())
 }
+'@ | Out-File -FilePath "prisma/schema.prisma" -Encoding utf8NoBOM
