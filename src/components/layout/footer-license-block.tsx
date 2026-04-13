@@ -1,4 +1,4 @@
-﻿import {
+import {
   APP_ACCESS_NOTICE,
   APP_COPYRIGHT,
   APP_LICENSE_NAME,
@@ -19,5 +19,13 @@ export function FooterLicenseBlock() {
     </footer>
   );
 }
+
+
+
+
+
+
+
+
 
 

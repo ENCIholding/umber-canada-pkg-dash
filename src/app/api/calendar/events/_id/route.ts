@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
 export async function PATCH(req: Request, { params }: any) {
@@ -27,5 +27,14 @@ export async function DELETE(req: Request, { params }: any) {
     return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }
+
+
+
+
+
+
+
+
+
 
 

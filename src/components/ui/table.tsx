@@ -1,5 +1,13 @@
-﻿import * as React from "react";
+import * as React from "react";
 
 export function Table({ className, ...props }: React.TableHTMLAttributes<HTMLTableElement>) {
   return <table className={className} {...props} />;
 }
+
+
+
+
+
+
+
+

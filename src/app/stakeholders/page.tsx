@@ -1,49 +1,66 @@
-﻿"use client";
+import { AppShell } from "@/src/app/components/layout/app-shell";
+import { PageActions } from "@/src/app/components/layout/page-actions";
+import { DocumentActionsBar } from "@/src/app/components/layout/document-actions-bar";
+import { RelatedRecordBlock } from "@/src/app/components/layout/related-record-block";
+import { ConnectedWorkflowBlock } from "@/src/app/components/layout/connected-workflow-block";
+import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
+import { RelatedLinks } from "@/src/app/components/layout/related-links";
+import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
+import { getStakeholdersList } from "@/src/lib/services/stakeholders";
 
-import { useEffect, useState } from "react";
-import { AppShell } from "@/components/layout/app-shell";
-
-export default function StakeholdersPage() {
-  const [rows, setRows] = useState<any[]>([]);
-
-  const loadRows = async () => {
-    const res = await fetch("/api/stakeholders");
-    const data = await res.json();
-    setRows(data);
-  };
-
-  useEffect(() => {
-    loadRows();
-  }, []);
+export default async function Page() {
+  const data = await getStakeholdersList();
 
   return (
-    <AppShell>
-      <div className="rounded-2xl bg-white p-6 shadow-sm dark:bg-zinc-950 dark:ring-1 dark:ring-white/10">
-        <h1 className="text-2xl font-bold text-zinc-900 dark:text-white">Stakeholders</h1>
-
-        <div className="mt-6 overflow-auto">
-          <table className="min-w-full text-sm">
-            <thead>
-              <tr className="border-b border-black/10 text-left dark:border-white/10">
-                <th className="px-3 py-2">Company</th>
-                <th className="px-3 py-2">Contact</th>
-                <th className="px-3 py-2">Currency</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr key={row.id} className="border-b border-black/5 dark:border-white/5">
-                  <td className="px-3 py-2 text-zinc-900 dark:text-white">{row.masterEntity?.companyName}</td>
-                  <td className="px-3 py-2 text-zinc-600 dark:text-zinc-300">{row.masterEntity?.contactName || "-"}</td>
-                  <td className="px-3 py-2 text-zinc-600 dark:text-zinc-300">{row.currency || "-"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+    <AppShell title="Stakeholders" subtitle="Internal and external stakeholders">
+      <PageActions title="Stakeholders" />
+      <div className="mt-4 rounded-lg border p-4">
+        <pre className="text-xs text-muted-foreground whitespace-pre-wrap">
+          {JSON.stringify(data, null, 2)}
+        </pre>
       </div>
+    
+      <RelatedLinks
+        title="Connected Areas"
+        links={[{ label: 'Procurement', href: '/procurement' }, { label: 'Shipments', href: '/shipments' }, { label: 'Projects', href: '/projects' }, { label: 'File Center', href: '/file-center' }]}
+      />
+    
+      <ModuleHomeLinks basePath="/stakeholders" />
+          <ConnectedWorkflowBlock
+        title="Connected Workflow"
+        steps={[
+          { label: 'Stakeholders', href: '/stakeholders' },
+          { label: 'Projects', href: '/projects' },
+          { label: 'Procurement', href: '/procurement' },
+          { label: 'Shipments', href: '/shipments' }
+        ]}
+      />
+    
+      <RelatedRecordBlock
+        title="Linked Records"
+        items={[
+          { label: 'Procurement Module', value: '/procurement' },
+          { label: 'Shipments Module', value: '/shipments' },
+          { label: 'Projects Module', value: '/projects' },
+          { label: 'File Center', value: '/file-center' }
+        ]}
+      />
+    
+      <DocumentActionsBar entityName="stakeholders" />
     </AppShell>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 

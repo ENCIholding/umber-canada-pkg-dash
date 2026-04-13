@@ -1,12 +1,29 @@
-﻿export default function Page() {
+import { AppShell } from "@/src/app/components/layout/app-shell";
+import { PageActions } from "@/src/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
+import { getAdvisorsList } from "@/src/lib/services/advisors";
+
+export default async function Page() {
+  const data = await getAdvisorsList();
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold">advisors</h1>
-      <p className="mt-2 text-zinc-600">
-        This is a placeholder page for 'advisors'. The route is wired up and ready for real content.
-      </p>
-    </div>
+    <AppShell title="advisors" subtitle="advisors overview">
+      <PageActions title="advisors" />
+      <div className="mt-4">
+        <pre className="text-xs text-muted-foreground">
+          {JSON.stringify(data, null, 2)}
+        </pre>
+      </div>
+    
+      <ModuleHomeLinks basePath="/advisors" />
+    </AppShell>
   );
 }
+
+
+
+
+
+
+
 
 

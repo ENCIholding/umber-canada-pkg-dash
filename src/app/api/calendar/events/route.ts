@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
 export async function GET() {
@@ -11,5 +11,14 @@ export async function POST(req: Request) {
   const event = await prisma.calendarEvent.create({ data });
   return NextResponse.json(event);
 }
+
+
+
+
+
+
+
+
+
 
 

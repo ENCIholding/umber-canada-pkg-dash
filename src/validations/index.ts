@@ -1,4 +1,4 @@
-﻿export function isValidCanadianPostalCode(value: string): boolean {
+export function isValidCanadianPostalCode(value: string): boolean {
   if (!value) return false;
   const cleaned = value.toUpperCase().replace(/\s+/g, "");
   return /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z]\d[ABCEGHJ-NPRSTV-Z]\d$/.test(cleaned);
@@ -32,5 +32,13 @@ export function isValidISODate(value: string): boolean {
   const d = new Date(value);
   return !isNaN(d.getTime());
 }
+
+
+
+
+
+
+
+
 
 

@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -14,5 +14,14 @@ export async function GET() {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
+
+
+
+
+
+
+
+
 
 

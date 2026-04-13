@@ -1,4 +1,4 @@
-﻿import { NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/email";
 
 export async function POST(req: Request) {
@@ -10,5 +10,14 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }
 }
+
+
+
+
+
+
+
+
+
 
 

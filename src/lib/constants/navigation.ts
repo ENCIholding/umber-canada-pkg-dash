@@ -1,29 +1,54 @@
-﻿export const NAV_ITEMS = [
-  { label: " dashboard.Value.ToUpper() ashboard", href: "/dashboard" },
-  { label: " master database.Value.ToUpper() aster  master database.Value.ToUpper() atabase", href: "/master-database" },
-  { label: " stakeholders.Value.ToUpper() takeholders", href: "/stakeholders" },
-  { label: " vendors clients.Value.ToUpper() endors  vendors clients.Value.ToUpper() lients", href: "/vendors-clients" },
-  { label: " projects.Value.ToUpper() rojects", href: "/projects" },
-  { label: " calendar schedule.Value.ToUpper() alendar  calendar schedule.Value.ToUpper() chedule", href: "/calendar-schedule" },
-  { label: " gantt timelines.Value.ToUpper() antt  gantt timelines.Value.ToUpper() imelines", href: "/gantt-timelines" },
-  { label: " payments sent.Value.ToUpper() ayments  payments sent.Value.ToUpper() ent", href: "/payments-sent" },
-  { label: " payments received.Value.ToUpper() ayments  payments received.Value.ToUpper() eceived", href: "/payments-received" },
-  { label: " expenses.Value.ToUpper() xpenses", href: "/expenses" },
-  { label: " procurement.Value.ToUpper() rocurement", href: "/procurement" },
-  { label: " shipments.Value.ToUpper() hipments", href: "/shipments" },
-  { label: " receiving.Value.ToUpper() eceiving", href: "/receiving" },
-  { label: " deliveries.Value.ToUpper() eliveries", href: "/deliveries" },
-  { label: " rentals.Value.ToUpper() entals", href: "/rentals" },
-  { label: " compliance.Value.ToUpper() ompliance", href: "/compliance" },
-  { label: " finance.Value.ToUpper() inance", href: "/finance" },
-  { label: " taxation.Value.ToUpper() axation", href: "/taxation" },
-  { label: " advisors.Value.ToUpper() dvisors", href: "/advisors" },
-  { label: " pipeline.Value.ToUpper() ipeline", href: "/pipeline" },
-  { label: " careers staff.Value.ToUpper() areers  careers staff.Value.ToUpper() taff", href: "/careers-staff" },
-  { label: " file center.Value.ToUpper() ile  file center.Value.ToUpper() enter", href: "/file-center" },
-  { label: " reports.Value.ToUpper() eports", href: "/reports" },
-  { label: " settings.Value.ToUpper() ettings", href: "/settings" },
-  { label: " license.Value.ToUpper() icense", href: "/license" },
+export type NavItem = {
+  title: string;
+  href?: string;
+  children?: NavItem[];
+};
+
+export const appNavigation: NavItem[] = [
+  {
+    title: 'Operations',
+    children: [
+      { title: 'Dashboard', href: '/dashboard' },
+      { title: 'Procurement', href: '/procurement' },
+      { title: 'Shipments', href: '/shipments' },
+      { title: 'Receiving', href: '/receiving' },
+      { title: 'Deliveries', href: '/deliveries' },
+      { title: 'Projects', href: '/projects' },
+      { title: 'Gantt', href: '/gantt' }
+    ]
+  },
+  {
+    title: 'Finance',
+    children: [
+      { title: 'Finance', href: '/finance' },
+      { title: 'Payments Sent', href: '/payments-sent' },
+      { title: 'Payments Received', href: '/payments-received' },
+      { title: 'Expenses', href: '/expenses' },
+      { title: 'Rentals', href: '/rentals' },
+      { title: 'Taxation', href: '/taxation' },
+      { title: 'Reports', href: '/reports' }
+    ]
+  },
+  {
+    title: 'CRM & Network',
+    children: [
+      { title: 'Vendors & Clients', href: '/vendors-clients' },
+      { title: 'Stakeholders', href: '/stakeholders' },
+      { title: 'Advisors', href: '/advisors' },
+      { title: 'Pipeline', href: '/pipeline' },
+      { title: 'Master DB', href: '/master-db' }
+    ]
+  },
+  {
+    title: 'Admin & Support',
+    children: [
+      { title: 'Compliance', href: '/compliance' },
+      { title: 'Careers & Staff', href: '/careers-staff' },
+      { title: 'File Center', href: '/file-center' },
+      { title: 'Email', href: '/email' }
+    ]
+  }
 ];
+
 
 
