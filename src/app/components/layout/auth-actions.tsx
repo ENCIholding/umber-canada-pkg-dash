@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
+import { ThemeToggle } from "@/components/layout/theme-toggle";
 
 export function AuthActions() {
   const router = useRouter();
@@ -15,6 +16,7 @@ export function AuthActions() {
   return (
     <div className="auth-actions flex items-center gap-3">
       <span className="text-sm text-muted-foreground">Local session</span>
+      <ThemeToggle />
       <button
         className="rounded-md border px-3 py-2 text-sm font-medium"
         onClick={handleLogout}

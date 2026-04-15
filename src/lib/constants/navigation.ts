@@ -9,6 +9,7 @@ export const appNavigation: NavItem[] = [
     title: 'Operations',
     children: [
       { title: 'Dashboard', href: '/dashboard' },
+      { title: 'Automation', href: '/automation' },
       { title: 'Procurement', href: '/procurement' },
       { title: 'Shipments', href: '/shipments' },
       { title: 'Receiving', href: '/receiving' },

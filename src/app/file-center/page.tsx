@@ -12,31 +12,73 @@ export default async function Page() {
   const data = await getFilesList();
 
   return (
-    <AppShell title="File Center" subtitle="Document and file management">
+    <AppShell title="File Center" subtitle="document vault for job packages, resumes, change orders, and compliance docs">
       <PageActions title="File Center" />
-      <div className="mt-4 rounded-lg border p-4">
-        <pre className="text-xs text-muted-foreground whitespace-pre-wrap">
-          {JSON.stringify(data, null, 2)}
-        </pre>
+      <div className="mt-4 grid gap-4 md:grid-cols-3">
+        <section className="rounded-xl border p-5">
+          <div className="text-sm text-muted-foreground">Tracked documents</div>
+          <div className="mt-2 text-3xl font-semibold">{data.length}</div>
+          <div className="mt-2 text-sm text-muted-foreground">Local file center records available to operations and admin teams</div>
+        </section>
+        <section className="rounded-xl border p-5">
+          <div className="text-sm text-muted-foreground">Supported uploads</div>
+          <div className="mt-2 text-lg font-semibold">PDF, Word, Resume Docs</div>
+          <div className="mt-2 text-sm text-muted-foreground">PDF, DOC, DOCX, RTF, TXT, and common image formats are accepted</div>
+        </section>
+        <section className="rounded-xl border p-5">
+          <div className="text-sm text-muted-foreground">Next automation step</div>
+          <div className="mt-2 text-lg font-semibold">Auto-notify stakeholders</div>
+          <div className="mt-2 text-sm text-muted-foreground">Trigger supplier, candidate, or project notifications when new files land</div>
+        </section>
+      </div>
+
+      <div className="mt-6 overflow-hidden rounded-xl border">
+        <table className="min-w-full divide-y">
+          <thead className="bg-muted/40 text-left text-xs uppercase tracking-[0.16em] text-muted-foreground">
+            <tr>
+              <th className="px-4 py-3">Document</th>
+              <th className="px-4 py-3">Category</th>
+              <th className="px-4 py-3">Linked job</th>
+              <th className="px-4 py-3">Status</th>
+              <th className="px-4 py-3">Notes</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y text-sm">
+            {data.map((file) => (
+              <tr key={file.id}>
+                <td className="px-4 py-4">
+                  <div className="font-medium">{file.fileName}</div>
+                  <div className="mt-1 text-muted-foreground">{file.uploadedAt ? new Date(file.uploadedAt).toLocaleString() : "Existing document"}</div>
+                </td>
+                <td className="px-4 py-4 text-muted-foreground">{file.category}</td>
+                <td className="px-4 py-4">{file.projectName ?? "Unassigned"}</td>
+                <td className="px-4 py-4">
+                  <span className="rounded-full border px-3 py-1 text-xs font-medium uppercase">{file.status ?? "active"}</span>
+                </td>
+                <td className="px-4 py-4 text-muted-foreground">{file.notes ?? "-"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     
       <RelatedLinks
         title="Connected Areas"
-        links={[{ label: 'Projects', href: '/projects' }, { label: 'Procurement', href: '/procurement' }, { label: 'Compliance', href: '/compliance' }, { label: 'Reports', href: '/reports' }]}
+        links={[{ label: 'Projects', href: '/projects' }, { label: 'Procurement', href: '/procurement' }, { label: 'Compliance', href: '/compliance' }, { label: 'Automation', href: '/automation' }]}
       />
     
       <ModuleHomeLinks basePath="/file-center" />
     
       <RelatedRecordBlock
         title="Linked Module Paths"
-        items={[{ label: 'Projects Module', value: '/projects' }, { label: 'Procurement Module', value: '/procurement' }, { label: 'Reports Module', value: '/reports' }]}
+        items={[{ label: 'Projects Module', value: '/projects' }, { label: 'Procurement Module', value: '/procurement' }, { label: 'Automation Center', value: '/automation' }]}
       />
     
       <DocumentActionsBar entityName="file-center" />
     
       <ConnectedWorkflowBlock
         title="Connected Workflow"
-        steps={[{ label: 'File Center', href: '/file-center' }, { label: 'Projects', href: '/projects' }, { label: 'Compliance', href: '/compliance' }, { label: 'Reports', href: '/reports' }]}
+        steps={[{ label: 'File Center', href: '/file-center' }, { label: 'Projects', href: '/projects' }, { label: 'Compliance', href: '/compliance' }, { label: 'Automation', href: '/automation' }]}
       />
     
       <EmailExportQuickActions module="file-center" subject="File Center Export Actions" />
