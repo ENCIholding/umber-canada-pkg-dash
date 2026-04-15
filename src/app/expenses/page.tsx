@@ -1,11 +1,10 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { RelatedLinks } from "@/src/app/components/layout/related-links";
-import { RelatedRecordBlock } from "@/src/app/components/layout/related-record-block";
-import { ConnectedWorkflowBlock } from "@/src/app/components/layout/connected-workflow-block";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getExpensesList } from "@/src/lib/services/expenses";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { RelatedLinks } from "@/app/components/layout/related-links";
+import { RelatedRecordBlock } from "@/app/components/layout/related-record-block";
+import { ConnectedWorkflowBlock } from "@/app/components/layout/connected-workflow-block";
+import { getExpensesList } from "@/lib/services/expenses";
 
 export default async function Page() {
   const data = await getExpensesList();
@@ -38,6 +37,10 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

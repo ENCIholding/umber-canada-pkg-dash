@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { emailForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { EmailForm } from "../components/form";
 
 export default function NewEmailPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewEmailPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { PaymentsReceivedForm } from "../components/form";
-import { getPaymentsReceivedById } from "@/src/lib/services/payments-received";
+import { getPaymentsReceivedById } from "@/lib/services/payments-received";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function PaymentsReceivedDetailPage({ params }: PageProps) 
     </AppShell>
   );
 }
+
+

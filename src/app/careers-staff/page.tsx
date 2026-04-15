@@ -1,7 +1,7 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getStaffList } from "@/src/lib/services/careers-staff";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { getStaffList } from "@/lib/services/careers-staff";
 
 export default async function Page() {
   const data = await getStaffList();
@@ -19,6 +19,10 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { ganttForm } from "../components/form";
-import { getganttById } from "@/src/lib/services/gantt";
+import AppShell from "@/app/components/layout/app-shell";
+import { GanttForm } from "../components/form";
+import { getganttById } from "@/lib/services/gantt";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function GanttDetailPage({ params }: PageProps) {
   return (
     <AppShell title="gantt detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <ganttForm mode="view" initialData={record ?? undefined} />
+        <GanttForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

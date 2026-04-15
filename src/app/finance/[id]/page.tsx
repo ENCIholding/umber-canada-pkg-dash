@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { financeForm } from "../components/form";
-import { getfinanceById } from "@/src/lib/services/finance";
+import AppShell from "@/app/components/layout/app-shell";
+import { FinanceForm } from "../components/form";
+import { getfinanceById } from "@/lib/services/finance";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function FinanceDetailPage({ params }: PageProps) {
   return (
     <AppShell title="finance detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <financeForm mode="view" initialData={record ?? undefined} />
+        <FinanceForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

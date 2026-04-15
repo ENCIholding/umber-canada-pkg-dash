@@ -1,11 +1,11 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { RelatedRecordBlock } from "@/src/app/components/layout/related-record-block";
-import { RelatedLinks } from "@/src/app/components/layout/related-links";
-import { DocumentActionsBar } from "@/src/app/components/layout/document-actions-bar";
-import { EmailExportQuickActions } from "@/src/app/components/layout/email-export-quick-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getEmailList } from "@/src/lib/services/email";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { RelatedRecordBlock } from "@/app/components/layout/related-record-block";
+import { RelatedLinks } from "@/app/components/layout/related-links";
+import { DocumentActionsBar } from "@/app/components/layout/document-actions-bar";
+import { EmailExportQuickActions } from "@/app/components/layout/email-export-quick-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { getEmailList } from "@/lib/services/email";
 
 export default async function Page() {
   const data = await getEmailList();
@@ -42,6 +42,11 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

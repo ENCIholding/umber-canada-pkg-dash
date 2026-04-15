@@ -26,3 +26,7 @@ export const RentalsColumns: ColumnDef<RentalsRow>[] = [
 
 
 
+
+
+
+

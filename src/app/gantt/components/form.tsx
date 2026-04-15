@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { GanttSchema, GanttFormValues } from "@/src/lib/validations/gantt";
+import Button from "@/app/components/ui/button";
+import { GanttSchema, GanttFormValues } from "@/lib/validations/gantt";
 
 type Mode = "create" | "edit" | "view";
 
-interface ganttFormProps {
+interface GanttFormProps {
   mode: Mode;
   initialData?: GanttFormValues;
 }
 
-export function ganttForm({ mode, initialData }: ganttFormProps) {
+export function GanttForm({ mode, initialData }: GanttFormProps) {
   const form = useForm<GanttFormValues>({
     resolver: zodResolver(GanttSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function ganttForm({ mode, initialData }: ganttFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const ganttForm = GanttForm;
 

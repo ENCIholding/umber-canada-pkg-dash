@@ -1,7 +1,7 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getTaxationList } from "@/src/lib/services/taxation";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { getTaxationList } from "@/lib/services/taxation";
 
 export default async function Page() {
   const data = await getTaxationList();
@@ -19,6 +19,10 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

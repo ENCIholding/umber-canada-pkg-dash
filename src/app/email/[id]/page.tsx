@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { emailForm } from "../components/form";
-import { getemailById } from "@/src/lib/services/email";
+import AppShell from "@/app/components/layout/app-shell";
+import { EmailForm } from "../components/form";
+import { getemailById } from "@/lib/services/email";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function EmailDetailPage({ params }: PageProps) {
   return (
     <AppShell title="email detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <emailForm mode="view" initialData={record ?? undefined} />
+        <EmailForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

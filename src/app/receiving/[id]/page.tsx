@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { receivingForm } from "../components/form";
-import { getreceivingById } from "@/src/lib/services/receiving";
+import AppShell from "@/app/components/layout/app-shell";
+import { ReceivingForm } from "../components/form";
+import { getreceivingById } from "@/lib/services/receiving";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function ReceivingDetailPage({ params }: PageProps) {
   return (
     <AppShell title="receiving detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <receivingForm mode="view" initialData={record ?? undefined} />
+        <ReceivingForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

@@ -1,15 +1,12 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { DocumentActionsBar } from "@/src/app/components/layout/document-actions-bar";
-import { EmailExportQuickActions } from "@/src/app/components/layout/email-export-quick-actions";
-import { RelatedLinks } from "@/src/app/components/layout/related-links";
-import { RelatedRecordBlock } from "@/src/app/components/layout/related-record-block";
-import { ConnectedWorkflowBlock } from "@/src/app/components/layout/connected-workflow-block";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { DocumentActionsBar } from "@/src/app/components/layout/document-actions-bar";
-import { EmailExportQuickActions } from "@/src/app/components/layout/email-export-quick-actions";
-import { getFilesList } from "@/src/lib/services/file-center";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { DocumentActionsBar } from "@/app/components/layout/document-actions-bar";
+import { EmailExportQuickActions } from "@/app/components/layout/email-export-quick-actions";
+import { RelatedLinks } from "@/app/components/layout/related-links";
+import { RelatedRecordBlock } from "@/app/components/layout/related-record-block";
+import { ConnectedWorkflowBlock } from "@/app/components/layout/connected-workflow-block";
+import { getFilesList } from "@/lib/services/file-center";
 
 export default async function Page() {
   const data = await getFilesList();
@@ -46,6 +43,10 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

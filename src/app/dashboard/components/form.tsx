@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { DashboardSchema, DashboardFormValues } from "@/src/lib/validations/dashboard";
+import Button from "@/app/components/ui/button";
+import { DashboardSchema, DashboardFormValues } from "@/lib/validations/dashboard";
 
 type Mode = "create" | "edit" | "view";
 
-interface dashboardFormProps {
+interface DashboardFormProps {
   mode: Mode;
   initialData?: DashboardFormValues;
 }
 
-export function dashboardForm({ mode, initialData }: dashboardFormProps) {
+export function DashboardForm({ mode, initialData }: DashboardFormProps) {
   const form = useForm<DashboardFormValues>({
     resolver: zodResolver(DashboardSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function dashboardForm({ mode, initialData }: dashboardFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const dashboardForm = DashboardForm;
 

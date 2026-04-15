@@ -1,3 +1,5 @@
+import { flooringProjects } from "@/lib/flooring-data";
+
 export type PaymentsReceivedRecord = {
   id: string;
   receiptNumber: string;
@@ -13,48 +15,30 @@ export type PaymentsReceivedRecord = {
   createdAt?: string;
 };
 
-const MOCK_PAYMENTS_RECEIVED: PaymentsReceivedRecord[] = [
-  {
-    id: '1',
-    receiptNumber: 'PR-001',
-    payerName: 'Client A',
-    projectName: 'Parkallen Fourplex',
-    category: 'Deposit',
-    status: 'received',
-    receivedDate: '2026-04-11',
-    amount: '10000.00',
-    method: 'EFT',
-    referenceNumber: 'EFT-IN-3001',
-    notes: 'Initial client deposit',
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    receiptNumber: 'PR-002',
-    payerName: 'Tenant Improvement Client',
-    projectName: 'Restaurant Interior',
-    category: 'Progress Payment',
-    status: 'cleared',
-    receivedDate: '2026-04-12',
-    amount: '7500.00',
-    method: 'Cheque',
-    referenceNumber: 'CHK-IN-122',
-    notes: 'Second draw payment',
-    createdAt: new Date().toISOString(),
-  },
-];
-
 export async function getPaymentsReceivedList() {
-  return MOCK_PAYMENTS_RECEIVED;
+  return flooringProjects.map((project, index) => ({
+    id: `pay-in-${project.id}`,
+    receiptNumber: `PR-${5200 + index + 1}`,
+    payerName: project.builder,
+    projectName: project.name,
+    category: index % 2 === 0 ? "Progress draw" : "Material deposit",
+    status: project.status === "billing" ? "due for invoicing" : "received",
+    receivedDate: `2026-04-${11 + index}`,
+    amount: String(Math.round(project.squareFeet * 4.2)),
+    method: "EFT",
+    referenceNumber: `UMB-AR-${4100 + index}`,
+    notes: `Job draw tied to ${project.stage.toLowerCase()}`,
+    createdAt: `2026-04-${11 + index}`
+  }));
 }
 
 export async function getPaymentsReceivedById(id: string) {
-  return MOCK_PAYMENTS_RECEIVED.find((x) => x.id === id) ?? null;
+  return (await getPaymentsReceivedList()).find((x) => x.id === id) ?? null;
 }
 
 export async function createPaymentsReceived(payload: Omit<PaymentsReceivedRecord, 'id' | 'createdAt'>) {
   return {
-    id: String(MOCK_PAYMENTS_RECEIVED.length + 1),
+    id: String((await getPaymentsReceivedList()).length + 1),
     ...payload,
     createdAt: new Date().toISOString(),
   };
@@ -67,6 +51,10 @@ export async function updatePaymentsReceived(id: string, payload: Partial<Paymen
 export async function deletePaymentsReceived(id: string) {
   return { success: true, id };
 }
+
+
+
+
 
 
 

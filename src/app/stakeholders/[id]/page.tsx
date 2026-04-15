@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { StakeholdersForm } from "../components/form";
-import { getStakeholdersById } from "@/src/lib/services/stakeholders";
+import { getStakeholdersById } from "@/lib/services/stakeholders";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function StakeholderDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

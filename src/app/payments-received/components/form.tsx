@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { PaymentsReceivedSchema, type PaymentsReceivedFormValues } from '@/src/lib/validations/payments-received';
+import Button from "@/app/components/ui/button";
+import { PaymentsReceivedSchema, type PaymentsReceivedFormValues } from '@/lib/validations/payments-received';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -95,6 +95,10 @@ export function PaymentsReceivedForm({ mode, initialData }: PaymentsReceivedForm
     </form>
   );
 }
+
+
+
+
 
 
 

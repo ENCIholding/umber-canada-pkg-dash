@@ -50,5 +50,23 @@ export const appNavigation: NavItem[] = [
   }
 ];
 
+export type FlatNavItem = {
+  label: string;
+  href: string;
+};
+
+export const NAV_ITEMS: FlatNavItem[] = appNavigation.flatMap((group) =>
+  (group.children ?? [])
+    .filter((item): item is Required<Pick<NavItem, "title" | "href">> => Boolean(item.href))
+    .map((item) => ({
+      label: item.title,
+      href: item.href
+    }))
+);
+
+
+
+
+
 
 

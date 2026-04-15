@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { projectsForm } from "../../components/form";
-import { getprojectsById } from "@/src/lib/services/projects";
+import AppShell from "@/app/components/layout/app-shell";
+import { ProjectsForm } from "../../components/form";
+import { getprojectsById } from "@/lib/services/projects";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function EditProjectsPage({ params }: PageProps) {
   return (
     <AppShell title="Edit projects" subtitle="Update record">
       <div className="max-w-3xl">
-        <projectsForm mode="edit" initialData={record ?? undefined} />
+        <ProjectsForm mode="edit" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { FinanceSchema, FinanceFormValues } from "@/src/lib/validations/finance";
+import Button from "@/app/components/ui/button";
+import { FinanceSchema, FinanceFormValues } from "@/lib/validations/finance";
 
 type Mode = "create" | "edit" | "view";
 
-interface financeFormProps {
+interface FinanceFormProps {
   mode: Mode;
   initialData?: FinanceFormValues;
 }
 
-export function financeForm({ mode, initialData }: financeFormProps) {
+export function FinanceForm({ mode, initialData }: FinanceFormProps) {
   const form = useForm<FinanceFormValues>({
     resolver: zodResolver(FinanceSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function financeForm({ mode, initialData }: financeFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const financeForm = FinanceForm;
 

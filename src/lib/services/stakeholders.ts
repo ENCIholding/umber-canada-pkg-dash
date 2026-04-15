@@ -1,27 +1,24 @@
-export const MOCK_STAKEHOLDERS = [
-  {
-    id: '1',
-    name: 'City Inspector',
-    role: 'Inspector',
-    organization: 'City of Edmonton',
-    status: 'active'
-  },
-  {
-    id: '2',
-    name: 'Project Owner',
-    role: 'Owner',
-    organization: 'Private',
-    status: 'active'
-  }
-];
+import { flooringStakeholders, getProjectById } from "@/lib/flooring-data";
 
 export async function getStakeholdersList() {
-  return MOCK_STAKEHOLDERS;
+  return flooringStakeholders.map((stakeholder) => ({
+    id: stakeholder.id,
+    name: stakeholder.name,
+    role: stakeholder.role,
+    organization: stakeholder.organization,
+    status: stakeholder.status,
+    projectName: getProjectById(stakeholder.projectId)?.name ?? "Unknown project",
+    nextTouch: stakeholder.nextTouch
+  }));
 }
 
 export async function getStakeholdersById(id: string) {
-  return MOCK_STAKEHOLDERS.find(x => x.id === id) ?? null;
+  return (await getStakeholdersList()).find((entry) => entry.id === id) ?? null;
 }
+
+
+
+
 
 
 

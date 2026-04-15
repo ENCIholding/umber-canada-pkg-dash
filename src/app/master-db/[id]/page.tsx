@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { masterdbForm } from "../components/form";
-import { getmasterdbById } from "@/src/lib/services/master-db";
+import AppShell from "@/app/components/layout/app-shell";
+import { MasterDbForm } from "../components/form";
+import { getmasterdbById } from "@/lib/services/master-db";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function MasterDbDetailPage({ params }: PageProps) {
   return (
     <AppShell title="master-db detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <masterdbForm mode="view" initialData={record ?? undefined} />
+        <MasterDbForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

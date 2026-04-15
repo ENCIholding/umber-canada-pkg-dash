@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { dashboardForm } from "../../components/form";
-import { getdashboardById } from "@/src/lib/services/dashboard";
+import AppShell from "@/app/components/layout/app-shell";
+import { DashboardForm } from "../../components/form";
+import { getdashboardById } from "@/lib/services/dashboard";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function EditDashboardPage({ params }: PageProps) {
   return (
     <AppShell title="Edit dashboard" subtitle="Update record">
       <div className="max-w-3xl">
-        <dashboardForm mode="edit" initialData={record ?? undefined} />
+        <DashboardForm mode="edit" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

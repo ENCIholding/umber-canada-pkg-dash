@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { masterdbForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { MasterDbForm } from "../components/form";
 
 export default function NewMasterDbPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewMasterDbPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { pipelineForm } from "../components/form";
-import { getpipelineById } from "@/src/lib/services/pipeline";
+import AppShell from "@/app/components/layout/app-shell";
+import { PipelineForm } from "../components/form";
+import { getpipelineById } from "@/lib/services/pipeline";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function PipelineDetailPage({ params }: PageProps) {
   return (
     <AppShell title="pipeline detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <pipelineForm mode="view" initialData={record ?? undefined} />
+        <PipelineForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

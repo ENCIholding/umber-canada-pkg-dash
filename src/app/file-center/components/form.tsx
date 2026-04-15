@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { FileSchema, type FileFormValues } from '@/src/lib/validations/file-center';
+import Button from "@/app/components/ui/button";
+import { FileSchema, type FileFormValues } from '@/lib/validations/file-center';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -45,6 +45,10 @@ export function FileForm({ mode, initialData }: FileFormProps) {
     </form>
   );
 }
+
+
+
+
 
 
 

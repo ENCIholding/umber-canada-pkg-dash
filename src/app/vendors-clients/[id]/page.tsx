@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { VendorsClientsForm } from "../components/form";
-import { getVendorsClientsById } from "@/src/lib/services/vendors-clients";
+import { getVendorsClientsById } from "@/lib/services/vendors-clients";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function VendorsClientsDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

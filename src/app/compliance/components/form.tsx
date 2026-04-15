@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { ComplianceSchema, type ComplianceFormValues } from '@/src/lib/validations/compliance';
+import Button from "@/app/components/ui/button";
+import { ComplianceSchema, type ComplianceFormValues } from '@/lib/validations/compliance';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -49,6 +49,10 @@ export function ComplianceForm({ mode, initialData }: ComplianceFormProps) {
     </form>
   );
 }
+
+
+
+
 
 
 

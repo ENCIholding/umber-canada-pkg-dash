@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { VendorsClientsSchema, type VendorsClientsFormValues } from '@/src/lib/validations/vendors-clients';
+import Button from "@/app/components/ui/button";
+import { VendorsClientsSchema, type VendorsClientsFormValues } from '@/lib/validations/vendors-clients';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -37,6 +37,10 @@ export function VendorsClientsForm({ mode, initialData }: any) {
     </form>
   );
 }
+
+
+
+
 
 
 

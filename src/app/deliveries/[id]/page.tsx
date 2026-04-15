@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { deliveriesForm } from "../components/form";
-import { getdeliveriesById } from "@/src/lib/services/deliveries";
+import AppShell from "@/app/components/layout/app-shell";
+import { DeliveriesForm } from "../components/form";
+import { getdeliveriesById } from "@/lib/services/deliveries";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function DeliveriesDetailPage({ params }: PageProps) {
   return (
     <AppShell title="deliveries detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <deliveriesForm mode="view" initialData={record ?? undefined} />
+        <DeliveriesForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

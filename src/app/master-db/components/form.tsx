@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { MasterDbSchema, MasterDbFormValues } from "@/src/lib/validations/master-db";
+import Button from "@/app/components/ui/button";
+import { MasterDbSchema, MasterDbFormValues } from "@/lib/validations/master-db";
 
 type Mode = "create" | "edit" | "view";
 
-interface masterdbFormProps {
+interface MasterDbFormProps {
   mode: Mode;
   initialData?: MasterDbFormValues;
 }
 
-export function masterdbForm({ mode, initialData }: masterdbFormProps) {
+export function MasterDbForm({ mode, initialData }: MasterDbFormProps) {
   const form = useForm<MasterDbFormValues>({
     resolver: zodResolver(MasterDbSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function masterdbForm({ mode, initialData }: masterdbFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const masterdbForm = MasterDbForm;
 

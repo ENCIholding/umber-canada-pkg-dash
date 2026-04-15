@@ -1,4 +1,3 @@
-@'
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,32 +17,41 @@ model User {
 }
 
 model Stakeholder {
-  id        String   @id @default(cuid())
-  name      String
-  country   String
-  email     String?
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id             String          @id @default(cuid())
+  name           String
+  country        String
+  email          String?
+  phone          String?
+  purchaseOrders PurchaseOrder[]
+  shipments      Shipment[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
 }
 
 model Client {
-  id        String   @id @default(cuid())
-  name      String
-  email     String?
-  phone     String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id               String            @id @default(cuid())
+  name             String
+  email            String?
+  phone            String?
+  projects         Project[]
+  paymentsReceived PaymentReceived[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model Project {
-  id        String   @id @default(cuid())
-  name      String
-  status    String
-  clientId  String?
-  client    Client?  @relation(fields: [clientId], references: [id])
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id               String            @id @default(cuid())
+  name             String
+  status           String
+  clientId         String?
+  client           Client?           @relation(fields: [clientId], references: [id])
+  purchaseOrders   PurchaseOrder[]
+  paymentsSent     PaymentSent[]
+  paymentsReceived PaymentReceived[]
+  expenses         Expense[]
+  deliveries       Delivery[]
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
 }
 
 model PurchaseOrder {
@@ -53,6 +61,7 @@ model PurchaseOrder {
   stakeholder   Stakeholder? @relation(fields: [stakeholderId], references: [id])
   projectId     String?
   project       Project? @relation(fields: [projectId], references: [id])
+  shipments     Shipment[]
   total         Decimal  @default(0)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -183,4 +192,3 @@ model EmailLog {
   status    String
   createdAt DateTime @default(now())
 }
-'@ | Out-File -FilePath "prisma/schema.prisma" -Encoding utf8NoBOM

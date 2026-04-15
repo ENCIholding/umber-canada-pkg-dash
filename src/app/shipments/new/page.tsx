@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { shipmentsForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { ShipmentsForm } from "../components/form";
 
 export default function NewShipmentsPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewShipmentsPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

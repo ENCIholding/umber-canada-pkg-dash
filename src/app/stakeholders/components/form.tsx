@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { StakeholdersSchema, type StakeholdersFormValues } from '@/src/lib/validations/stakeholders';
+import Button from "@/app/components/ui/button";
+import { StakeholdersSchema, type StakeholdersFormValues } from '@/lib/validations/stakeholders';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -37,6 +37,10 @@ export function StakeholdersForm({ mode, initialData }: any) {
     </form>
   );
 }
+
+
+
+
 
 
 

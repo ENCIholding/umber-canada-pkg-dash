@@ -1,3 +1,5 @@
+import { flooringPartners, flooringProjects, flooringPurchaseOrders } from "@/lib/flooring-data";
+
 export type PaymentsSentRecord = {
   id: string;
   paymentNumber: string;
@@ -13,48 +15,30 @@ export type PaymentsSentRecord = {
   createdAt?: string;
 };
 
-const MOCK_PAYMENTS_SENT: PaymentsSentRecord[] = [
-  {
-    id: '1',
-    paymentNumber: 'PS-001',
-    payeeName: 'ABC Lumber',
-    projectName: 'Parkallen Fourplex',
-    category: 'Materials',
-    status: 'paid',
-    paymentDate: '2026-04-11',
-    amount: '3500.00',
-    method: 'EFT',
-    referenceNumber: 'EFT-1001',
-    notes: 'Framing lumber deposit',
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    paymentNumber: 'PS-002',
-    payeeName: 'Northwest Plumbing',
-    projectName: 'Restaurant Interior',
-    category: 'Subcontractor',
-    status: 'scheduled',
-    paymentDate: '2026-04-13',
-    amount: '1800.00',
-    method: 'Cheque',
-    referenceNumber: 'CHK-205',
-    notes: 'Rough-in stage payment',
-    createdAt: new Date().toISOString(),
-  },
-];
-
 export async function getPaymentsSentList() {
-  return MOCK_PAYMENTS_SENT;
+  return flooringPurchaseOrders.map((po, index) => ({
+    id: `pay-sent-${po.id}`,
+    paymentNumber: `PS-${2400 + index + 1}`,
+    payeeName: flooringPartners.find((partner) => partner.id === po.partnerId)?.name ?? "Unknown payee",
+    projectName: flooringProjects.find((project) => project.id === po.projectId)?.name ?? "Unknown project",
+    category: po.category,
+    status: po.status === "received" ? "paid" : po.status === "partial" ? "partially paid" : "scheduled",
+    paymentDate: po.orderDate,
+    amount: String(Math.round(po.amount * 0.45)),
+    method: index % 2 === 0 ? "EFT" : "Cheque",
+    referenceNumber: `UMB-EFT-${8800 + index}`,
+    notes: `Supplier release for ${po.material}`,
+    createdAt: po.orderDate
+  }));
 }
 
 export async function getPaymentsSentById(id: string) {
-  return MOCK_PAYMENTS_SENT.find((x) => x.id === id) ?? null;
+  return (await getPaymentsSentList()).find((x) => x.id === id) ?? null;
 }
 
 export async function createPaymentsSent(payload: Omit<PaymentsSentRecord, 'id' | 'createdAt'>) {
   return {
-    id: String(MOCK_PAYMENTS_SENT.length + 1),
+    id: String((await getPaymentsSentList()).length + 1),
     ...payload,
     createdAt: new Date().toISOString(),
   };
@@ -67,6 +51,10 @@ export async function updatePaymentsSent(id: string, payload: Partial<PaymentsSe
 export async function deletePaymentsSent(id: string) {
   return { success: true, id };
 }
+
+
+
+
 
 
 

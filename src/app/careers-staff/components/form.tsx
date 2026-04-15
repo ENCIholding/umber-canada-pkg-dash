@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { StaffSchema, type StaffFormValues } from '@/src/lib/validations/careers-staff';
+import Button from "@/app/components/ui/button";
+import { StaffSchema, type StaffFormValues } from '@/lib/validations/careers-staff';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -47,6 +47,10 @@ export function StaffForm({ mode, initialData }: StaffFormProps) {
     </form>
   );
 }
+
+
+
+
 
 
 

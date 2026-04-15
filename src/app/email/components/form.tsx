@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { EmailSchema, EmailFormValues } from "@/src/lib/validations/email";
+import Button from "@/app/components/ui/button";
+import { EmailSchema, EmailFormValues } from "@/lib/validations/email";
 
 type Mode = "create" | "edit" | "view";
 
-interface emailFormProps {
+interface EmailFormProps {
   mode: Mode;
   initialData?: EmailFormValues;
 }
 
-export function emailForm({ mode, initialData }: emailFormProps) {
+export function EmailForm({ mode, initialData }: EmailFormProps) {
   const form = useForm<EmailFormValues>({
     resolver: zodResolver(EmailSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function emailForm({ mode, initialData }: emailFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const emailForm = EmailForm;
 

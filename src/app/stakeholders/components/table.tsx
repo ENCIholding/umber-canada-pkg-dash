@@ -22,3 +22,7 @@ export const stakeholdersColumns: ColumnDef<stakeholdersRow>[] = [
 
 
 
+
+
+
+

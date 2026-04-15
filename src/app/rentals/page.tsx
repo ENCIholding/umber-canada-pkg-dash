@@ -1,12 +1,11 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { DocumentActionsBar } from "@/src/app/components/layout/document-actions-bar";
-import { RelatedRecordBlock } from "@/src/app/components/layout/related-record-block";
-import { ConnectedWorkflowBlock } from "@/src/app/components/layout/connected-workflow-block";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { RelatedLinks } from "@/src/app/components/layout/related-links";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getRentalsList } from "@/src/lib/services/rentals";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { DocumentActionsBar } from "@/app/components/layout/document-actions-bar";
+import { RelatedRecordBlock } from "@/app/components/layout/related-record-block";
+import { ConnectedWorkflowBlock } from "@/app/components/layout/connected-workflow-block";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { RelatedLinks } from "@/app/components/layout/related-links";
+import { getRentalsList } from "@/lib/services/rentals";
 
 export default async function Page() {
   const data = await getRentalsList();
@@ -48,6 +47,10 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

@@ -1,25 +1,24 @@
-export const MOCK_VENDORS_CLIENTS = [
-  {
-    id: '1',
-    name: 'ABC Lumber',
-    type: 'Vendor',
-    status: 'active'
-  },
-  {
-    id: '2',
-    name: 'Client A',
-    type: 'Client',
-    status: 'active'
-  }
-];
+import { flooringPartners } from "@/lib/flooring-data";
 
 export async function getVendorsClientsList() {
-  return MOCK_VENDORS_CLIENTS;
+  return flooringPartners.map((partner) => ({
+    id: partner.id,
+    name: partner.name,
+    type: partner.type,
+    specialty: partner.specialty,
+    serviceArea: partner.serviceArea,
+    creditTerms: partner.creditTerms,
+    status: partner.status
+  }));
 }
 
 export async function getVendorsClientsById(id: string) {
-  return MOCK_VENDORS_CLIENTS.find(x => x.id === id) ?? null;
+  return (await getVendorsClientsList()).find((entry) => entry.id === id) ?? null;
 }
+
+
+
+
 
 
 

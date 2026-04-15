@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { PipelineSchema, PipelineFormValues } from "@/src/lib/validations/pipeline";
+import Button from "@/app/components/ui/button";
+import { PipelineSchema, PipelineFormValues } from "@/lib/validations/pipeline";
 
 type Mode = "create" | "edit" | "view";
 
-interface pipelineFormProps {
+interface PipelineFormProps {
   mode: Mode;
   initialData?: PipelineFormValues;
 }
 
-export function pipelineForm({ mode, initialData }: pipelineFormProps) {
+export function PipelineForm({ mode, initialData }: PipelineFormProps) {
   const form = useForm<PipelineFormValues>({
     resolver: zodResolver(PipelineSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function pipelineForm({ mode, initialData }: pipelineFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const pipelineForm = PipelineForm;
 

@@ -1,4 +1,4 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { RentalsForm } from "../components/form";
 
 export default function NewRentalsPage() {
@@ -10,6 +10,10 @@ export default function NewRentalsPage() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

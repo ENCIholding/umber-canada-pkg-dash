@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { advisorsForm } from "../components/form";
-import { getadvisorsById } from "@/src/lib/services/advisors";
+import AppShell from "@/app/components/layout/app-shell";
+import { AdvisorsForm } from "../components/form";
+import { getadvisorsById } from "@/lib/services/advisors";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function AdvisorsDetailPage({ params }: PageProps) {
   return (
     <AppShell title="advisors detail" subtitle="View record details">
       <div className="max-w-3xl">
-        <advisorsForm mode="view" initialData={record ?? undefined} />
+        <AdvisorsForm mode="view" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

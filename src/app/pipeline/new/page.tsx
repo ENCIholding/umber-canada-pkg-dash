@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { pipelineForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { PipelineForm } from "../components/form";
 
 export default function NewPipelinePage() {
   return (
@@ -10,6 +10,11 @@ export default function NewPipelinePage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

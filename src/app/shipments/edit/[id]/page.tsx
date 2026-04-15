@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { shipmentsForm } from "../../components/form";
-import { getshipmentsById } from "@/src/lib/services/shipments";
+import AppShell from "@/app/components/layout/app-shell";
+import { ShipmentsForm } from "../../components/form";
+import { getshipmentsById } from "@/lib/services/shipments";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function EditShipmentsPage({ params }: PageProps) {
   return (
     <AppShell title="Edit shipments" subtitle="Update record">
       <div className="max-w-3xl">
-        <shipmentsForm mode="edit" initialData={record ?? undefined} />
+        <ShipmentsForm mode="edit" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+

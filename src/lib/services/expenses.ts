@@ -1,3 +1,5 @@
+import { flooringProjects } from "@/lib/flooring-data";
+
 export type ExpensesRecord = {
   id: string;
   expenseNumber: string;
@@ -11,30 +13,32 @@ export type ExpensesRecord = {
   notes?: string;
 };
 
-const MOCK_EXPENSES: ExpensesRecord[] = [
-  {
-    id: '1',
-    expenseNumber: 'EXP-001',
-    vendorName: 'Home Depot',
-    projectName: 'Parkallen',
-    category: 'Materials',
-    status: 'paid',
-    expenseDate: '2026-04-10',
-    amount: '850.00',
-  }
-];
-
 export async function getExpensesList() {
-  return MOCK_EXPENSES;
+  return flooringProjects.map((project, index) => ({
+    id: `expense-${project.id}`,
+    expenseNumber: `EXP-${6100 + index}`,
+    vendorName: index % 2 === 0 ? "Site Logistics" : "Moisture Testing",
+    projectName: project.name,
+    category: index % 2 === 0 ? "Freight + handling" : "Pre-install QA",
+    status: "paid",
+    expenseDate: `2026-04-${10 + index}`,
+    amount: String(640 + index * 185),
+    receiptRef: `RCPT-${7100 + index}`,
+    notes: `Indirect cost supporting ${project.code}`
+  }));
 }
 
 export async function getExpensesById(id: string) {
-  return MOCK_EXPENSES.find(x => x.id === id) ?? null;
+  return (await getExpensesList()).find(x => x.id === id) ?? null;
 }
 
 export async function createExpenses(data: any) {
   return { id: 'new', ...data };
 }
+
+
+
+
 
 
 

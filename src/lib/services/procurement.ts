@@ -1,3 +1,9 @@
+import {
+  flooringPurchaseOrders,
+  getPartnerById,
+  getProjectById
+} from "@/lib/flooring-data";
+
 export type ProcurementRecord = {
   id: string;
   poNumber: string;
@@ -11,44 +17,29 @@ export type ProcurementRecord = {
   createdAt?: string;
 };
 
-const MOCK_PROCUREMENT: ProcurementRecord[] = [
-  {
-    id: '1',
-    poNumber: 'PO-001',
-    vendorName: 'ABC Supply',
-    projectName: 'Parkallen Fourplex',
-    status: 'active',
-    orderDate: '2026-04-11',
-    expectedDate: '2026-04-18',
-    totalAmount: '12500.00',
-    notes: 'Initial framing materials',
-    createdAt: new Date().toISOString(),
-  },
-  {
-    id: '2',
-    poNumber: 'PO-002',
-    vendorName: 'Northwest Electrical',
-    projectName: 'Restaurant Interior',
-    status: 'draft',
-    orderDate: '2026-04-12',
-    expectedDate: '2026-04-20',
-    totalAmount: '4800.00',
-    notes: 'Electrical rough-in package',
-    createdAt: new Date().toISOString(),
-  },
-];
-
 export async function getProcurementList() {
-  return MOCK_PROCUREMENT;
+  return flooringPurchaseOrders.map((po) => ({
+    id: po.id,
+    poNumber: po.poNumber,
+    vendorName: getPartnerById(po.partnerId)?.name ?? "Unknown vendor",
+    projectName: getProjectById(po.projectId)?.name ?? "Unknown project",
+    status: po.status,
+    orderDate: po.orderDate,
+    expectedDate: po.expectedDate,
+    totalAmount: po.amount.toLocaleString("en-CA", { style: "currency", currency: "CAD" }),
+    notes: `${po.material} for ${po.destination}`,
+    createdAt: po.orderDate
+  }));
 }
 
 export async function getProcurementById(id: string) {
-  return MOCK_PROCUREMENT.find((x) => x.id === id) ?? null;
+  const row = (await getProcurementList()).find((entry) => entry.id === id);
+  return row ?? null;
 }
 
 export async function createProcurement(payload: Omit<ProcurementRecord, 'id' | 'createdAt'>) {
   return {
-    id: String(MOCK_PROCUREMENT.length + 1),
+    id: String(flooringPurchaseOrders.length + 1),
     ...payload,
     createdAt: new Date().toISOString(),
   };
@@ -61,6 +52,10 @@ export async function updateProcurement(id: string, payload: Partial<Procurement
 export async function deleteProcurement(id: string) {
   return { success: true, id };
 }
+
+
+
+
 
 
 

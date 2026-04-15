@@ -1,31 +1,32 @@
 import { NextResponse } from "next/server";
-import { prisma } from "@/lib/db/prisma";
+import { getLocalDataStore } from "@/lib/local-data-store";
 
 export async function GET() {
-  const rows = await prisma.vendorClient.findMany({
-    include: { masterEntity: true },
-    orderBy: { createdAt: "desc" },
-  });
-
-  return NextResponse.json(rows);
+  const store = getLocalDataStore();
+  return NextResponse.json(store.vendorClients);
 }
 
 export async function POST(req: Request) {
   const body = await req.json();
-
-  const row = await prisma.vendorClient.create({
-    data: {
-      masterEntityId: body.masterEntityId,
-      category: body.category,
-      projectType: body.projectType || null,
-      creditTerms: body.creditTerms || null,
-      paymentPattern: body.paymentPattern || null,
-    },
-    include: { masterEntity: true },
-  });
-
+  const store = getLocalDataStore();
+  const masterEntity = store.masterEntities.find((entity) => entity.id === body.masterEntityId) ?? null;
+  const row = {
+    id: crypto.randomUUID(),
+    masterEntityId: body.masterEntityId,
+    category: body.category,
+    projectType: body.projectType || null,
+    creditTerms: body.creditTerms || null,
+    paymentPattern: body.paymentPattern || null,
+    masterEntity,
+    createdAt: new Date().toISOString()
+  };
+  store.vendorClients.unshift(row);
   return NextResponse.json(row);
 }
+
+
+
+
 
 
 

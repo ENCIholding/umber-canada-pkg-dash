@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { ExpensesForm } from "../../components/form";
-import { getExpensesById } from "@/src/lib/services/expenses";
+import { getExpensesById } from "@/lib/services/expenses";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function EditExpensesPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

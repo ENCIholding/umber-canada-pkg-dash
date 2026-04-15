@@ -16,3 +16,6 @@ export async function getfilescenterList() {
 export async function getfilescenterById(id: string) {
   return MOCK.find(x => x.id === id) ?? null;
 }
+
+
+

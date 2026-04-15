@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { ProjectsSchema, ProjectsFormValues } from "@/src/lib/validations/projects";
+import Button from "@/app/components/ui/button";
+import { ProjectsSchema, ProjectsFormValues } from "@/lib/validations/projects";
 
 type Mode = "create" | "edit" | "view";
 
-interface projectsFormProps {
+interface ProjectsFormProps {
   mode: Mode;
   initialData?: ProjectsFormValues;
 }
 
-export function projectsForm({ mode, initialData }: projectsFormProps) {
+export function ProjectsForm({ mode, initialData }: ProjectsFormProps) {
   const form = useForm<ProjectsFormValues>({
     resolver: zodResolver(ProjectsSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function projectsForm({ mode, initialData }: projectsFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const projectsForm = ProjectsForm;
 

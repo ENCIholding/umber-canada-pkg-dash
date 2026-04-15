@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { ProcurementSchema, type ProcurementFormValues } from '@/src/lib/validations/procurement';
+import Button from "@/app/components/ui/button";
+import { ProcurementSchema, type ProcurementFormValues } from '@/lib/validations/procurement';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -118,6 +118,10 @@ export function ProcurementForm({ mode, initialData }: ProcurementFormProps) {
     </form>
   );
 }
+
+
+
+
 
 
 

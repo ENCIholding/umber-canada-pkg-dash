@@ -2,8 +2,8 @@
 
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from "@/src/app/components/ui/button";
-import { RentalsSchema, type RentalsFormValues } from '@/src/lib/validations/rentals';
+import Button from "@/app/components/ui/button";
+import { RentalsSchema, type RentalsFormValues } from '@/lib/validations/rentals';
 
 type Mode = 'create' | 'edit' | 'view';
 
@@ -97,6 +97,10 @@ export function RentalsForm({ mode, initialData }: RentalsFormProps) {
     </form>
   );
 }
+
+
+
+
 
 
 

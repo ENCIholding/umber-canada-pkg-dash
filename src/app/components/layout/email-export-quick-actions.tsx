@@ -1,8 +1,23 @@
 import React from "react";
 
-export default function EmailExportQuickActions() {
-  return <div className="email-export-quick-actions">Email/Export (dev stub)</div>;
+interface EmailExportQuickActionsProps {
+  module?: string;
+  subject?: string;
 }
+
+export function EmailExportQuickActions({ module, subject }: EmailExportQuickActionsProps) {
+  return (
+    <div className="email-export-quick-actions rounded-lg border px-4 py-3 text-sm">
+      Email/Export: {subject ?? module ?? "Quick actions"}
+    </div>
+  );
+}
+
+export default EmailExportQuickActions;
+
+
+
+
 
 
 

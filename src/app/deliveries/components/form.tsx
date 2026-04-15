@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { DeliveriesSchema, DeliveriesFormValues } from "@/src/lib/validations/deliveries";
+import Button from "@/app/components/ui/button";
+import { DeliveriesSchema, DeliveriesFormValues } from "@/lib/validations/deliveries";
 
 type Mode = "create" | "edit" | "view";
 
-interface deliveriesFormProps {
+interface DeliveriesFormProps {
   mode: Mode;
   initialData?: DeliveriesFormValues;
 }
 
-export function deliveriesForm({ mode, initialData }: deliveriesFormProps) {
+export function DeliveriesForm({ mode, initialData }: DeliveriesFormProps) {
   const form = useForm<DeliveriesFormValues>({
     resolver: zodResolver(DeliveriesSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function deliveriesForm({ mode, initialData }: deliveriesFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const deliveriesForm = DeliveriesForm;
 

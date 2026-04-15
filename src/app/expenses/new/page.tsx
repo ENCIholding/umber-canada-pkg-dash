@@ -1,4 +1,4 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { ExpensesForm } from "../components/form";
 
 export default function NewExpensesPage() {
@@ -10,6 +10,10 @@ export default function NewExpensesPage() {
     </AppShell>
   );
 }
+
+
+
+
 
 
 

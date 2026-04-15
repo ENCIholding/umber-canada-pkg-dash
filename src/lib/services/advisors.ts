@@ -17,6 +17,12 @@ export async function getAdvisorsById(id: string) {
   return MOCK.find(x => x.id === id) ?? null;
 }
 
+export const getadvisorsById = getAdvisorsById;
+
+
+
+
+
 
 
 

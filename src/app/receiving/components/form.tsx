@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { ReceivingSchema, ReceivingFormValues } from "@/src/lib/validations/receiving";
+import Button from "@/app/components/ui/button";
+import { ReceivingSchema, ReceivingFormValues } from "@/lib/validations/receiving";
 
 type Mode = "create" | "edit" | "view";
 
-interface receivingFormProps {
+interface ReceivingFormProps {
   mode: Mode;
   initialData?: ReceivingFormValues;
 }
 
-export function receivingForm({ mode, initialData }: receivingFormProps) {
+export function ReceivingForm({ mode, initialData }: ReceivingFormProps) {
   const form = useForm<ReceivingFormValues>({
     resolver: zodResolver(ReceivingSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,11 +51,5 @@ export function receivingForm({ mode, initialData }: receivingFormProps) {
   );
 }
 
-
-
-
-
-
-
-
+export const receivingForm = ReceivingForm;
 

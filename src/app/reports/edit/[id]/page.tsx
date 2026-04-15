@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { ReportsForm } from "../../components/form";
-import { getReportsById } from "@/src/lib/services/reports";
+import { getReportsById } from "@/lib/services/reports";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function EditReportsPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

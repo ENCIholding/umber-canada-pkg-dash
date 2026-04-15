@@ -1,8 +1,14 @@
 import React from "react";
 
-export default function FinancePrintSnapshot() {
-  return <div className="finance-print-snapshot">Print snapshot (dev stub)</div>;
+export function FinancePrintSnapshot() {
+  return <div className="finance-print-snapshot rounded-lg border px-4 py-3 text-sm">Print snapshot</div>;
 }
+
+export default FinancePrintSnapshot;
+
+
+
+
 
 
 

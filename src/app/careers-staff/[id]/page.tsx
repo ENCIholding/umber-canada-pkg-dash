@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { StaffForm } from "../components/form";
-import { getStaffById } from "@/src/lib/services/careers-staff";
+import { getStaffById } from "@/lib/services/careers-staff";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function StaffDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

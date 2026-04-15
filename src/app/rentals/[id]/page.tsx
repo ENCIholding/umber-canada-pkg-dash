@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { RentalsForm } from "../components/form";
-import { getRentalsById } from "@/src/lib/services/rentals";
+import { getRentalsById } from "@/lib/services/rentals";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function RentalsDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

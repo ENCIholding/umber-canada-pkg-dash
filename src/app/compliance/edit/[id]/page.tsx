@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { ComplianceForm } from "../../components/form";
-import { getComplianceById } from "@/src/lib/services/compliance";
+import { getComplianceById } from "@/lib/services/compliance";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function EditCompliancePage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

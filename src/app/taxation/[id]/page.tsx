@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { TaxationForm } from "../components/form";
-import { getTaxationById } from "@/src/lib/services/taxation";
+import { getTaxationById } from "@/lib/services/taxation";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function TaxationDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

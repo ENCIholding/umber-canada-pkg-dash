@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { projectsForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { ProjectsForm } from "../components/form";
 
 export default function NewProjectsPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewProjectsPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

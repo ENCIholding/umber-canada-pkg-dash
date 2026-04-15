@@ -2,17 +2,17 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/src/app/components/ui/button";
-import { AdvisorsSchema, AdvisorsFormValues } from "@/src/lib/validations/advisors";
+import Button from "@/app/components/ui/button";
+import { AdvisorsSchema, AdvisorsFormValues } from "@/lib/validations/advisors";
 
 type Mode = "create" | "edit" | "view";
 
-interface advisorsFormProps {
+interface AdvisorsFormProps {
   mode: Mode;
   initialData?: AdvisorsFormValues;
 }
 
-export function advisorsForm({ mode, initialData }: advisorsFormProps) {
+export function AdvisorsForm({ mode, initialData }: AdvisorsFormProps) {
   const form = useForm<AdvisorsFormValues>({
     resolver: zodResolver(AdvisorsSchema),
     defaultValues: initialData ?? { name: "", status: "" },
@@ -51,12 +51,5 @@ export function advisorsForm({ mode, initialData }: advisorsFormProps) {
   );
 }
 
-
-
-
-
-
-
-
-
+export const advisorsForm = AdvisorsForm;
 

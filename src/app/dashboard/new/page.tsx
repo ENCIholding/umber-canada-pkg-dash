@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { dashboardForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { DashboardForm } from "../components/form";
 
 export default function NewDashboardPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewDashboardPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

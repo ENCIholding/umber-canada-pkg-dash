@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Button } from "@/src/app/components/ui/button";
+import Button from "@/app/components/ui/button";
 
 export function ExpensesActions({ basePath }: { basePath: string }) {
   return (
@@ -10,6 +10,10 @@ export function ExpensesActions({ basePath }: { basePath: string }) {
     </Button>
   );
 }
+
+
+
+
 
 
 

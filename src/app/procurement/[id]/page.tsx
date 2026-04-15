@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { ProcurementForm } from "../components/form";
-import { getProcurementById } from "@/src/lib/services/procurement";
+import { getProcurementById } from "@/lib/services/procurement";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function ProcurementDetailPage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

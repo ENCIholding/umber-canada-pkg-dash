@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { financeForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { FinanceForm } from "../components/form";
 
 export default function NewFinancePage() {
   return (
@@ -10,6 +10,11 @@ export default function NewFinancePage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

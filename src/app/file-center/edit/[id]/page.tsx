@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
+import AppShell from "@/app/components/layout/app-shell";
 import { FileForm } from "../../components/form";
-import { getFileById } from "@/src/lib/services/file-center";
+import { getFileById } from "@/lib/services/file-center";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -18,3 +18,5 @@ export default async function EditFilePage({ params }: PageProps) {
     </AppShell>
   );
 }
+
+

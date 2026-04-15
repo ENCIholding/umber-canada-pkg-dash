@@ -17,6 +17,12 @@ export async function getPipelineById(id: string) {
   return MOCK.find(x => x.id === id) ?? null;
 }
 
+export const getpipelineById = getPipelineById;
+
+
+
+
+
 
 
 

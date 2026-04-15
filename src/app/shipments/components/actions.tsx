@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Button } from "@/src/app/components/ui/button";
+import Button from "@/app/components/ui/button";
 
 interface shipmentsActionsProps {
   basePath: string;
@@ -16,6 +16,10 @@ export function shipmentsActions({ basePath }: shipmentsActionsProps) {
     </div>
   );
 }
+
+
+
+
 
 
 

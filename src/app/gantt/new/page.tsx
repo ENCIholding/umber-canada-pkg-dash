@@ -1,5 +1,5 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { ganttForm } from "../components/form";
+import AppShell from "@/app/components/layout/app-shell";
+import { GanttForm } from "../components/form";
 
 export default function NewGanttPage() {
   return (
@@ -10,6 +10,11 @@ export default function NewGanttPage() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

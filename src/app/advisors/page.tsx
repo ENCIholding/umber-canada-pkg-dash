@@ -1,7 +1,7 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { PageActions } from "@/src/app/components/layout/page-actions";
-import { ModuleHomeLinks } from "@/src/app/components/layout/module-home-links";
-import { getAdvisorsList } from "@/src/lib/services/advisors";
+import AppShell from "@/app/components/layout/app-shell";
+import { PageActions } from "@/app/components/layout/page-actions";
+import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
+import { getAdvisorsList } from "@/lib/services/advisors";
 
 export default async function Page() {
   const data = await getAdvisorsList();
@@ -18,6 +18,11 @@ export default async function Page() {
     </AppShell>
   );
 }
+
+
+
+
+
 
 
 

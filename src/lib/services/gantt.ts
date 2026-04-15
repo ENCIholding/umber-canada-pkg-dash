@@ -17,6 +17,12 @@ export async function getGanttById(id: string) {
   return MOCK.find(x => x.id === id) ?? null;
 }
 
+export const getganttById = getGanttById;
+
+
+
+
+
 
 
 

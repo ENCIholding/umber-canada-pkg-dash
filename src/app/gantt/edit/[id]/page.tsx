@@ -1,6 +1,6 @@
-import { AppShell } from "@/src/app/components/layout/app-shell";
-import { ganttForm } from "../../components/form";
-import { getganttById } from "@/src/lib/services/gantt";
+import AppShell from "@/app/components/layout/app-shell";
+import { GanttForm } from "../../components/form";
+import { getganttById } from "@/lib/services/gantt";
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -12,8 +12,10 @@ export default async function EditGanttPage({ params }: PageProps) {
   return (
     <AppShell title="Edit gantt" subtitle="Update record">
       <div className="max-w-3xl">
-        <ganttForm mode="edit" initialData={record ?? undefined} />
+        <GanttForm mode="edit" initialData={record ?? undefined} />
       </div>
     </AppShell>
   );
 }
+
+
