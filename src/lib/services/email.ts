@@ -6,6 +6,8 @@ export type EmailFormValues = {
   urgency?: string;
   nextAction?: string;
   downstreamImpact?: string;
+  relatedRecord?: string;
+  attachments?: string[];
 };
 
 const MOCK: EmailFormValues[] = [
@@ -15,8 +17,10 @@ const MOCK: EmailFormValues[] = [
     status: "waiting on reply",
     owner: "Project coordination",
     urgency: "high",
-    nextAction: "Follow up with site superintendent before 4 PM",
-    downstreamImpact: "If no reply lands, Friday drop slips and Crew Atlas loses install time"
+    nextAction: "Send access request with elevator release sheet attached before 4 PM",
+    downstreamImpact: "If no reply lands, Friday drop slips and Crew Atlas loses install time.",
+    relatedRecord: "Riverfront Tower Lobby | Shipments",
+    attachments: ["Elevator access confirmation", "Tile staging release sheet"]
   },
   {
     id: "2",
@@ -24,8 +28,21 @@ const MOCK: EmailFormValues[] = [
     status: "queued",
     owner: "Finance",
     urgency: "medium",
-    nextAction: "Send draw backup and holdback tracker to client AP",
-    downstreamImpact: "Faster release improves working capital for inbound April material packages"
+    nextAction: "Send draw backup, holdback tracker, and deficiency completion summary to client AP.",
+    downstreamImpact: "Faster release improves working capital for inbound April material packages.",
+    relatedRecord: "Parkland Multi-Family Phase 2 | Finance",
+    attachments: ["Final billing and holdback package"]
+  },
+  {
+    id: "3",
+    name: "Painter deficiency closeout chase",
+    status: "drafted",
+    owner: "Builder coordination",
+    urgency: "high",
+    nextAction: "Request sign-off photo package so the Aspen Estates delivery can auto-release.",
+    downstreamImpact: "Until the builder signs off, staged material and install slots remain blocked.",
+    relatedRecord: "Aspen Estates Showhome | Projects",
+    attachments: ["Painter deficiency closeout photos"]
   }
 ];
 
@@ -34,18 +51,7 @@ export async function getEmailList() {
 }
 
 export async function getEmailById(id: string) {
-  return MOCK.find(x => x.id === id) ?? null;
+  return MOCK.find((entry) => entry.id === id) ?? null;
 }
 
 export const getemailById = getEmailById;
-
-
-
-
-
-
-
-
-
-
-

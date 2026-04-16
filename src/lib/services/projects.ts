@@ -14,6 +14,12 @@ export type ProjectsFormValues = {
   installWindow?: string;
   crew?: string;
   nextAction?: string;
+  startDate?: string;
+  estimatedCompletionDate?: string;
+  province?: string;
+  outOfProvince?: boolean;
+  financeExposure?: string;
+  installReadiness?: string;
 };
 
 export async function getProjectsList() {
@@ -30,7 +36,13 @@ export async function getProjectsList() {
     marginPercent: project.marginPercent,
     installWindow: project.installWindow,
     crew: project.crew,
-    nextAction: project.nextAction
+    nextAction: project.nextAction,
+    startDate: project.startDate,
+    estimatedCompletionDate: project.estimatedCompletionDate,
+    province: project.province,
+    outOfProvince: project.outOfProvince,
+    financeExposure: project.financeExposure,
+    installReadiness: project.installReadiness
   }));
 }
 
@@ -53,7 +65,13 @@ export async function getProjectsById(id: string) {
     marginPercent: project.marginPercent,
     installWindow: project.installWindow,
     crew: project.crew,
-    nextAction: project.nextAction
+    nextAction: project.nextAction,
+    startDate: project.startDate,
+    estimatedCompletionDate: project.estimatedCompletionDate,
+    province: project.province,
+    outOfProvince: project.outOfProvince,
+    financeExposure: project.financeExposure,
+    installReadiness: project.installReadiness
   };
 }
 

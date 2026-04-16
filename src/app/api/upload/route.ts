@@ -9,6 +9,7 @@ export async function POST(req: Request) {
   try {
     const data = await req.formData();
     const file = data.get("file") as File;
+    const linkedProject = String(data.get("linkedProject") ?? "");
 
     if (!file) {
       return NextResponse.json({ success: false, error: "No file uploaded" }, { status: 400 });
@@ -36,7 +37,17 @@ export async function POST(req: Request) {
     const filePath = path.join(UPLOAD_DIR, fileName);
     await fs.writeFile(filePath, buffer);
 
-    return NextResponse.json({ success: true, fileName, originalName: file.name, size: file.size });
+    return NextResponse.json({
+      success: true,
+      fileName,
+      originalName: file.name,
+      size: file.size,
+      linkedProject,
+      attachment: {
+        filename: file.name,
+        path: filePath
+      }
+    });
   } catch (err) {
     return NextResponse.json({ success: false, error: String(err) }, { status: 500 });
   }

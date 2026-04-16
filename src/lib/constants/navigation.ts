@@ -46,7 +46,9 @@ export const appNavigation: NavItem[] = [
       { title: 'Compliance', href: '/compliance' },
       { title: 'Careers & Staff', href: '/careers-staff' },
       { title: 'File Center', href: '/file-center' },
-      { title: 'Email', href: '/email' }
+      { title: 'Email', href: '/email' },
+      { title: 'Settings', href: '/settings' },
+      { title: 'License', href: '/license' }
     ]
   }
 ];

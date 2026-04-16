@@ -1,6 +1,6 @@
 export const DEV_AUTH = {
   username: process.env.DEV_AUTH_USERNAME || "umbercanada",
-  password: process.env.DEV_AUTH_PASSWORD || "test umber",
+  password: process.env.DEV_AUTH_PASSWORD || "testumber",
   sessionCookie: "session",
   sessionValue: process.env.DEV_AUTH_SESSION || "dev-session-umbercanada"
 } as const;

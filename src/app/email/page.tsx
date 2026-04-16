@@ -46,6 +46,11 @@ export default async function Page() {
               <div className="text-muted-foreground">Next best action</div>
               <div className="mt-1 font-medium">{message.nextAction}</div>
             </div>
+            <div className="mt-3 rounded-lg border p-3 text-sm">
+              <div className="text-muted-foreground">Linked record</div>
+              <div className="mt-1 font-medium">{message.relatedRecord}</div>
+              <div className="mt-2 text-muted-foreground">Attachments: {message.attachments?.join(", ") ?? "None"}</div>
+            </div>
             <div className="mt-3 rounded-lg bg-accent/30 px-4 py-3 text-sm">
               {message.downstreamImpact}
             </div>
