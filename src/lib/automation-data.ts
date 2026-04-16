@@ -154,7 +154,7 @@ export function getAutomationRules(): AutomationRule[] {
       name: "Room readiness pulse",
       cadence: "daily 07:00",
       scope: "Projects + Gantt + Ops Center",
-      effect: "Scan room prep status, blocked install phases, and upcoming drops to produce the day’s install command list."
+      effect: "Scan room prep status, blocked install phases, and upcoming drops to produce the day's install command list."
     },
     {
       id: "rule-4",
