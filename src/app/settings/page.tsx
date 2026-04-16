@@ -33,6 +33,14 @@ const sections = [
       "Future admin controls should manage calendar colors, upload rules, payment terms, and feature flags",
       "Role scaffolding and security hardening remain on the next pass"
     ]
+  },
+  {
+    title: "Next real leap",
+    items: [
+      "Move all modules toward full relational Prisma-backed persistence instead of mixed in-memory and mock structures",
+      "Apply stricter Canadian validation everywhere, especially phone, province, postal code, and business contact normalization",
+      "Add stronger role permissions, richer calendar and Gantt editing, audit logs, and fuller add/edit/delete UI coverage across every entity"
+    ]
   }
 ];
 

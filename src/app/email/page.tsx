@@ -6,6 +6,7 @@ import { DocumentActionsBar } from "@/app/components/layout/document-actions-bar
 import { EmailExportQuickActions } from "@/app/components/layout/email-export-quick-actions";
 import { ModuleHomeLinks } from "@/app/components/layout/module-home-links";
 import { getEmailList } from "@/lib/services/email";
+import { EmailComposer } from "./email-composer";
 
 export default async function Page() {
   const data = await getEmailList();
@@ -30,7 +31,9 @@ export default async function Page() {
         </section>
       </div>
 
-      <div className="mt-6 grid gap-4 xl:grid-cols-2">
+      <div className="mt-6 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+        <EmailComposer />
+        <div className="grid gap-4">
         {data.map((message) => (
           <section key={message.id} className="rounded-xl border p-5">
             <div className="flex items-start justify-between gap-3">
@@ -56,6 +59,7 @@ export default async function Page() {
             </div>
           </section>
         ))}
+        </div>
       </div>
     
       <ModuleHomeLinks basePath="/email" />
