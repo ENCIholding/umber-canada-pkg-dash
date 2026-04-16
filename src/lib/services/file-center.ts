@@ -43,6 +43,7 @@ export async function getFilesList() {
             category:
               extension === ".pdf" ? "PDF package" :
               extension === ".doc" || extension === ".docx" ? "Word document" :
+              extension === ".xls" || extension === ".xlsx" || extension === ".csv" ? "Spreadsheet" :
               extension === ".rtf" || extension === ".txt" ? "Text document" :
               "Image",
             projectName: "Unassigned",

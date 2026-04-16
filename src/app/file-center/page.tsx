@@ -7,6 +7,7 @@ import { RelatedLinks } from "@/app/components/layout/related-links";
 import { RelatedRecordBlock } from "@/app/components/layout/related-record-block";
 import { ConnectedWorkflowBlock } from "@/app/components/layout/connected-workflow-block";
 import { getFilesList } from "@/lib/services/file-center";
+import { FileCenterTable } from "./file-center-table";
 
 export default async function Page() {
   const data = await getFilesList();
@@ -22,8 +23,8 @@ export default async function Page() {
         </section>
         <section className="rounded-xl border p-5">
           <div className="text-sm text-muted-foreground">Supported uploads</div>
-          <div className="mt-2 text-lg font-semibold">PDF, Word, Resume Docs</div>
-          <div className="mt-2 text-sm text-muted-foreground">PDF, DOC, DOCX, RTF, TXT, and common image formats are accepted</div>
+          <div className="mt-2 text-lg font-semibold">PDF, Word, Excel, Resume Docs</div>
+          <div className="mt-2 text-sm text-muted-foreground">PDF, DOC, DOCX, XLS, XLSX, CSV, RTF, TXT, and common image formats are accepted</div>
         </section>
         <section className="rounded-xl border p-5">
           <div className="text-sm text-muted-foreground">Next automation step</div>
@@ -32,35 +33,7 @@ export default async function Page() {
         </section>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-xl border">
-        <table className="min-w-full divide-y">
-          <thead className="bg-muted/40 text-left text-xs uppercase tracking-[0.16em] text-muted-foreground">
-            <tr>
-              <th className="px-4 py-3">Document</th>
-              <th className="px-4 py-3">Category</th>
-              <th className="px-4 py-3">Linked job</th>
-              <th className="px-4 py-3">Status</th>
-              <th className="px-4 py-3">Notes</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y text-sm">
-            {data.map((file) => (
-              <tr key={file.id}>
-                <td className="px-4 py-4">
-                  <div className="font-medium">{file.fileName}</div>
-                  <div className="mt-1 text-muted-foreground">{file.uploadedAt ? new Date(file.uploadedAt).toLocaleString() : "Existing document"}</div>
-                </td>
-                <td className="px-4 py-4 text-muted-foreground">{file.category}</td>
-                <td className="px-4 py-4">{file.projectName ?? "Unassigned"}</td>
-                <td className="px-4 py-4">
-                  <span className="rounded-full border px-3 py-1 text-xs font-medium uppercase">{file.status ?? "active"}</span>
-                </td>
-                <td className="px-4 py-4 text-muted-foreground">{file.notes ?? "-"}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <FileCenterTable initialFiles={data} />
     
       <RelatedLinks
         title="Connected Areas"

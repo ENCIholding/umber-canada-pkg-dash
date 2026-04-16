@@ -24,6 +24,19 @@ export async function POST(req: Request) {
   return NextResponse.json(row);
 }
 
+export async function DELETE(req: Request) {
+  const url = new URL(req.url);
+  const id = url.searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json({ success: false, error: "Missing vendor/client id." }, { status: 400 });
+  }
+
+  const store = getLocalDataStore();
+  store.vendorClients = store.vendorClients.filter((record) => String(record.id) !== id);
+  return NextResponse.json({ success: true, id });
+}
+
 
 
 

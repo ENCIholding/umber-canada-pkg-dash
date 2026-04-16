@@ -32,6 +32,19 @@ export async function POST(req: Request) {
   return NextResponse.json(row);
 }
 
+export async function DELETE(req: Request) {
+  const url = new URL(req.url);
+  const id = url.searchParams.get("id");
+
+  if (!id) {
+    return NextResponse.json({ success: false, error: "Missing master entity id." }, { status: 400 });
+  }
+
+  const store = getLocalDataStore();
+  store.masterEntities = store.masterEntities.filter((entity) => String(entity.id) !== id);
+  return NextResponse.json({ success: true, id });
+}
+
 
 
 

@@ -2,7 +2,9 @@ import nodemailer from "nodemailer";
 
 export type EmailAttachment = {
   filename: string;
-  path: string;
+  path?: string;
+  content?: string | Buffer;
+  contentType?: string;
 };
 
 export async function sendEmail(to: string, subject: string, text: string, attachments: EmailAttachment[] = []) {

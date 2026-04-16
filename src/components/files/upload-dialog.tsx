@@ -9,7 +9,7 @@ interface UploadDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-const ACCEPTED_TYPES = ".pdf,.doc,.docx,.rtf,.txt,.png,.jpg,.jpeg,.webp";
+const ACCEPTED_TYPES = ".pdf,.doc,.docx,.xls,.xlsx,.csv,.rtf,.txt,.png,.jpg,.jpeg,.webp";
 
 export default function UploadDialog({ open, onOpenChange }: UploadDialogProps) {
   const [file, setFile] = useState<File | null>(null);
@@ -106,7 +106,7 @@ export default function UploadDialog({ open, onOpenChange }: UploadDialogProps) 
           />
 
           <p className="text-xs text-muted-foreground">
-            Supports PDF, Word, RTF, text, and common image formats for resumes, supplier docs, job packages, and billing attachments.
+            Supports PDF, Word, Excel, CSV, RTF, text, and common image formats for resumes, supplier docs, job packages, invoices, and billing attachments.
           </p>
 
           {status ? <div className="rounded-md border px-3 py-2 text-sm">{status}</div> : null}

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
 
-const ALLOWED_EXTENSIONS = new Set([".pdf", ".doc", ".docx", ".rtf", ".txt", ".png", ".jpg", ".jpeg", ".webp"]);
+const ALLOWED_EXTENSIONS = new Set([".pdf", ".doc", ".docx", ".xls", ".xlsx", ".csv", ".rtf", ".txt", ".png", ".jpg", ".jpeg", ".webp"]);
 const MAX_FILE_SIZE = 15 * 1024 * 1024;
 
 export async function POST(req: Request) {
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
     const extension = path.extname(file.name).toLowerCase();
     if (!ALLOWED_EXTENSIONS.has(extension)) {
       return NextResponse.json(
-        { success: false, error: "Unsupported file type. Upload PDF, Word, RTF, text, or image documents." },
+        { success: false, error: "Unsupported file type. Upload PDF, Word, Excel, CSV, RTF, text, or image documents." },
         { status: 400 }
       );
     }
